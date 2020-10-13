@@ -105,11 +105,11 @@
         {
           if(Math.abs((a+b-2*m)/(b-a))>2.43/(n+1)+1.01/Math.log(n+9))
           {
-          alert("The data are SKEWED! The data are not recommended to be transformed with the normal-based methods!");
+          alert("By Shi et al. (2020+), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("The data are NORMAL! Please click 'Calculate' button to get the estimates!");
+          alert("By Shi et al. (2020+), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
           
         }
@@ -158,11 +158,11 @@
         {
           if(Math.abs((q1+q3-2*m)/(q3-q1))>2.66/Math.pow(n,0.5)-5.92/Math.pow(n,2))
           {
-          alert("The data are SKEWED! The data are not recommended to be transformed with the normal-based methods!");
+          alert("By Shi et al. (2020+), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("The data are NORMAL! Please click 'Calculate' button to get the estimates!");
+          alert("By Shi et al. (2020+), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
           
         }
@@ -220,11 +220,11 @@
           
           if(Math.max(2.65*Math.log(0.6*n)/Math.pow(n,0.5)*Math.abs((a+b-2*m)/(b-a)),Math.abs((q1+q3-2*m)/(q3-q1)))>2.97/Math.pow(n,0.5)-39.1/Math.pow(n,3))
           {
-          alert("The data are SKEWED! The data are not recommended to be transformed with the normal-based methods!");
+          alert("By Shi et al. (2020+), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("The data are NORMAL! Please click 'Calculate' button to get the estimates!");
+          alert("By Shi et al. (2020+), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
           
         }
@@ -368,6 +368,9 @@
           document.write("<b>Step 1</b>: Find the proper scenario for the given summary data (e.g., choose Scenario 1 if the given data are the minimum, median and maximum).    <br> <b>Step 2</b>: Input the summary data into the corresponding entries (e.g., Size = 100, Minimum = 11, Median = 18, Maximum = 29).    <br> <b>Step 3</b>: Click the <i>Detect the skewness</i> button to check whether the data are skewed away from normality. <br> <b>Step 4</b>: Click the <i>Calculate</i> button (only if the data are detected as Normal) and get the estimates of the sample mean and standard deviation according to the optimal methods in the specified papers.")
         </script>
           
+        <img src="flowchart.png" alt="Flow chart for meta-analysis" />
+
+
           <noscript>For full functionality of this page it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com" target="_blank" style="font-size: 20px;"> instructions how to enable JavaScript in your web browser</a></noscript>
           
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
@@ -473,17 +476,22 @@
           <blockquote>
           
           <div align="left">
-          J. Shi, D. Luo, H. Weng, X. Zeng, L. Lin, H. Chu and T. Tong (2020), "<a href="https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1429" target="_blank">Optimally estimating the sample standard deviation from the five-number summary</a>", <i>Research Synthesis Methods</i>, <b>11</b>: 641-654.
+          J. Shi, D. Luo, X. Wan, Y. Liu, J. Liu, Z. Bian and T. Tong* (2020+), "<a href="https://arxiv.org/pdf/2010.05749.pdf	" target="_blank">Detecting the skewness of data from the sample size and the five-number summary</a>",  arXiv:2010.05749.
+        </div>
+          <br>
+
+          <div align="left">
+          J. Shi, D. Luo, H. Weng, X. Zeng, L. Lin, H. Chu and T. Tong* (2020), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/RSM2020.pdf" target="_blank">Optimally estimating the sample standard deviation from the five-number summary</a>", <i>Research Synthesis Methods</i>, <b>11</b>: 641-654.
         </div>
           <br>
           
           <div align="left">
-          D. Luo, X. Wan, J. Liu and T. Tong (2018), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/SMMR2018.pdf" target="_blank">Optimally estimating the sample mean from the sample size, median, mid-range and/or mid-quartile range</a>", <i>Statistical Methods in Medical Research</i>, <b>27</b>: 1785-1805.
+          D. Luo, X. Wan, J. Liu and T. Tong* (2018), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/SMMR2018.pdf" target="_blank">Optimally estimating the sample mean from the sample size, median, mid-range and/or mid-quartile range</a>", <i>Statistical Methods in Medical Research</i>, <b>27</b>: 1785-1805.
         </div>
           <br>
           
           <div align="left">
-          X. Wan, W. Wang, J. Liu and T. Tong (2014), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/BMC_MRM2014.pdf" target="_blank">Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range</a>", <i>BMC Medical Research Methodology</i>, <b>14</b>: 135.
+          X. Wan, W. Wang, J. Liu and T. Tong* (2014), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/BMC_MRM2014.pdf" target="_blank">Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range</a>", <i>BMC Medical Research Methodology</i>, <b>14</b>: 135.
         </div>
           <br>
           
