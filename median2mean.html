@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title>Mean Variance Estimation</title>
-    
+
     <script language="JavaScript">
-      
+
       var n = 1*0;
       var m = 1*0;
       var a = 1*0;
@@ -23,7 +23,7 @@
       var test1 = 1;
       var test2 = 1;
       var test3 = 1;
-      
+
       function NormSInv(p) {
         var a1 = -39.6968302866538, a2 = 220.946098424521, a3 = -275.928510446969;
         var a4 = 138.357751867269, a5 = -30.6647980661472, a6 = 2.50662827745924;
@@ -35,7 +35,7 @@
         var p_low = 0.02425, p_high = 1 - p_low;
         var q, r;
         var retVal;
-        
+
         if ((p < 0) || (p > 1))
         {
           alert("NormSInv: Argument out of range.");
@@ -57,23 +57,23 @@
           q = Math.sqrt(-2 * Math.log(1 - p));
           retVal = -(((((c1 * q + c2) * q + c3) * q + c4) * q + c5) * q + c6) / ((((d1 * q + d2) * q + d3) * q + d4) * q + 1);
         }
-        
+
         return retVal;
       }
-      
+
       function rnd4(x)
       {
         if((x>=.0001) || (x<-0.0001)){return Math.round(x*10000)/10000}
         else{return "0"}
       }<!--end.f.rnd4-->
-        
+
         function calc1()
       {
         n = document.enter.elements[0].value*1;
         a = document.enter.elements[1].value*1;
         m = document.enter.elements[2].value*1;
         b = document.enter.elements[3].value*1;
-        
+
         if ((a > m) || (a > b) || (m > b))
         {
           alert("Invalid data!");
@@ -83,19 +83,19 @@
         {
           range = b-a*1;
           weight = 4/(4+Math.pow(n,0.75));
-          
+
           document.out.elements[0].value = rnd4(weight*(a+b)/2 + (1-weight)*m);
           document.out.elements[1].value = rnd4(range/(2*NormSInv((n-0.375)/(n+0.25))));
         }
         }<!--end function calc-->
-        
+
         function nt1()
       {
         n = document.enter.elements[0].value*1;
         a = document.enter.elements[1].value*1;
         m = document.enter.elements[2].value*1;
         b = document.enter.elements[3].value*1;
-        
+
         if ((a > m) || (a > b) || (m > b))
         {
           alert("Invalid data!");
@@ -103,25 +103,25 @@
         }
         else
         {
-          if(Math.abs((a+b-2*m)/(b-a))>2.43/(n+1)+1.01/Math.log(n+9))
+          if(Math.abs((a+b-2*m)/(b-a))>2.5/(n+1)+1/Math.log(n+9))
           {
-          alert("By Shi et al. (2021), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
+          alert("By Shi et al. (2023), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("By Shi et al. (2021), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
+          alert("By Shi et al. (2023), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
-          
+
         }
         }<!--end function nt1-->
-        
+
         function calc2()
       {
         n = document.enter2.elements[0].value*1;
         q1 = document.enter2.elements[1].value*1;
         m = document.enter2.elements[2].value*1;
         q3 = document.enter2.elements[3].value*1;
-        
+
         if ((q1 > m) || (q1 > q3) || (m > q3))
         {
           alert("Invalid data!");
@@ -130,25 +130,25 @@
         else
         {
           range = q3-q1*1;
-          
+
           if(n<1){
             n = 1;
           }
           weight = 0.70+0.39/n;
-   
+
           document.out2.elements[0].value = rnd4(weight*(q1+q3)/2 + (1-weight)*m);
           document.out2.elements[1].value = rnd4(range/(2*NormSInv((0.75*n-0.125)/(n+0.25))));
 
         }
         }<!--end function calc-->
-        
+
         function nt2()
       {
         n = document.enter2.elements[0].value*1;
         q1 = document.enter2.elements[1].value*1;
         m = document.enter2.elements[2].value*1;
         q3 = document.enter2.elements[3].value*1;
-        
+
         if ((q1 > m) || (q1 > q3) || (m > q3))
         {
           alert("Invalid data!");
@@ -156,18 +156,18 @@
         }
         else
         {
-          if(Math.abs((q1+q3-2*m)/(q3-q1))>2.66/Math.pow(n,0.5)-5.92/Math.pow(n,2))
+          if(Math.abs((q1+q3-2*m)/(q3-q1))>2.65/Math.pow(n,0.5)-6/Math.pow(n,2))
           {
-          alert("By Shi et al. (2021), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
+          alert("By Shi et al. (2023), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("By Shi et al. (2021), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
+          alert("By Shi et al. (2023), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
-          
+
         }
         }<!--end function nt2-->
-        
+
         function calc3()
       {
         n = document.enter3.elements[0].value*1;
@@ -176,7 +176,7 @@
         m = document.enter3.elements[3].value*1;
         q3 = document.enter3.elements[4].value*1;
         b = document.enter3.elements[5].value*1;
-        
+
         if ((a > q1) || (a > m) || (a > q3) || (a > b) || (q1 > m) || (q1 > q3) || (q1 > b) || (m > q3) || (m > b) || (q3 > b))
         {
           alert("Invalid data!");
@@ -186,11 +186,11 @@
         {
           range1 = b-a*1;
           range2 = q3-q1*1;
-          
+
           if(n<1){
             n = 1;
           }
-          
+
           weight1 = 2.2/(2.2+Math.pow(n,0.75));
           weight2 = 0.7-0.72/Math.pow(n,0.55);
           weight3 = 1/(1+0.07*Math.pow(n,0.6));
@@ -200,7 +200,7 @@
 
         }
         }<!--end function calc-->
-        
+
         function nt3()
       {
         n = document.enter3.elements[0].value*1;
@@ -209,7 +209,7 @@
         m = document.enter3.elements[3].value*1;
         q3 = document.enter3.elements[4].value*1;
         b = document.enter3.elements[5].value*1;
-        
+
         if ((a > q1) || (a > m) || (a > q3) || (a > b) || (q1 > m) || (q1 > q3) || (q1 > b) || (m > q3) || (m > b) || (q3 > b))
         {
           alert("Invalid data!");
@@ -217,38 +217,38 @@
         }
         else
         {
-          
-          if(Math.max(2.65*Math.log(0.6*n)/Math.pow(n,0.5)*Math.abs((a+b-2*m)/(b-a)),Math.abs((q1+q3-2*m)/(q3-q1)))>2.97/Math.pow(n,0.5)-39.1/Math.pow(n,3))
+
+          if(Math.max(2.65*Math.log(0.6*n)/Math.pow(n,0.5)*Math.abs((a+b-2*m)/(b-a)),Math.abs((q1+q3-2*m)/(q3-q1)))>3/Math.pow(n,0.5)-40/Math.pow(n,3))
           {
-          alert("By Shi et al. (2021), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
+          alert("By Shi et al. (2023), the data are significantly skewed away from normality. It is thus not recommended to apply the normal-based methods for data transformation.");
           }
           else
           {
-          alert("By Shi et al. (2021), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
+          alert("By Shi et al. (2023), there is no significant evidence to show that the data are skewed. To get the estimates of the sample mean and standard deviation, please click on the 'Calculate' button.");
           }
-          
+
         }
         }<!--end function nt3-->
-        
+
         function wipe1()
       {
         document.enter.elements[0].value = "";
         document.enter.elements[1].value = "";
-        
+
         document.out.elements[0].value = "";
         document.out.elements[1].value = "";
         document.out.elements[2].value = "";
         document.out.elements[3].value = "";
         document.out.elements[4].value = "";
         }<!--end function wipe-->
-        
+
         function wipe2()
       {
         document.enter2.elements[0].value = "";
         document.enter2.elements[1].value = "";
         document.enter2.elements[2].value = "";
         document.enter2.elements[3].value = "";
-        
+
         document.out2.elements[0].value = "";
         document.out2.elements[1].value = "";
         document.out2.elements[2].value = "";
@@ -261,25 +261,25 @@
         document.enter3.elements[3].value = "";
         document.enter3.elements[4].value = "";
         document.enter3.elements[5].value = "";
-        
+
         document.out3.elements[0].value = "";
         document.out3.elements[1].value = "";
         document.out3.elements[2].value = "";
       }
-      
+
       </script>
-        
-        
+
+
         <style type="text/css">
           .initial3 {
             background-color:#ffffcc;
           }
-        
+
         .initial4 {
           background-color:#ffffff;
         }
-        
-        
+
+
         .initial2{
           background-color:#F7F7F7;
             font-family:verdana;
@@ -289,14 +289,14 @@
           padding:4px;
           background-image:url(gradient.jpg);
           cursor:pointer;}
-        
+
         .initial2:hover{
           background-color:#eeeeee;
             border-color:#010785;
             color:red;
           background-image:url(gradient2.jpg);
         }
-        
+
         input{
           font-family:verdana;
           font-size:10pt;
@@ -305,7 +305,7 @@
           padding-top:2px;
           padding-bottom:2px;
         }
-        
+
         a.btn {
           padding:2px;
           padding-left:6px;
@@ -314,7 +314,7 @@
             -moz-border-radius:6px;
           -webkit-border-radius:6px;
           border-radius:6px;
-          
+
           font-family:Trebuchet MS;
           font-size:16px;
           font-weight:600;
@@ -332,7 +332,7 @@
         a.btn:visited {
           text-decoration:none;
         }
-        
+
         a.btn:hover {
           color:red;
           text-decoration:none;
@@ -341,173 +341,170 @@
             border-right-color:#A8A8A8 ;
             background-image:url(gradient2.jpg);
         }
-        
+
         a.btn:active {
           text-decoration:none;
         }
-        
+
         td {
           border:solid 1px #cccccc;
           border-collapse:collapse;
         }
-        
+
         table {
           border-collapse:collapse;
         }
-        
-        
+
+
         </style>
-          
+
           </head>
           <body>
           <div align="center">
-          <h2 style = "color:blue;font-family:courier;">Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range </h2>
-          
-          
-          <script type="text/javascript">
-          document.write("<b>Step 1</b>: Find the proper scenario for the given summary data (e.g., choose Scenario 1 if the given data are the minimum, median and maximum).    <br> <b>Step 2</b>: Input the summary data into the corresponding entries (e.g., Size = 100, Minimum = 11, Median = 18, Maximum = 29).    <br> <b>Step 3</b>: Click the <i>Detect the skewness</i> button to check whether the data are skewed away from normality by Shi et al. (2021). <br> <b>Step 4</b>: Click the <i>Calculate</i> button (only if the data are detected as Normal) and get the estimates of the sample mean and standard deviation according to the optimal methods in the specified papers.")
-        </script>
-         
+          <h2 style = "color:black;font-family:verdana;">Estimating the sample mean and standard deviation (SD) from the five-number summary and its application in meta-analysis </h2>
 
+          <br>
+          <script type="text/javascript">
+          document.write("<b>Step 1</b>: Find the proper scenario for the given summary data (e.g., choose <span style='color:blue;'>Scenario 1</span> if the reported five-number summary consists of the sample minimum, median and maximum).    <br> <b>Step 2</b>: Input the sample size and the five-number summary into the corresponding entries of each scenario (e.g., Size = 100, Minimum = 11, Median = 18, Maximum = 29).    <br> <b>Step 3</b>: Click the '<span style='color:blue;'>Detect the skewness</span>' button to check whether or not the data are significantly skewed away from normality by <span style='color:red;'>Shi et al. (2023)</span>. <br> <b>Step 4</b>: If the data are NOT significantly skewed (otherwise, go to <b>Step 5</b>), then click the '<span style='color:blue;'>Calculate</span>' button to get the estimates of the sample mean and SD according to the optimal methods from the specified papers. <br> <b>Step 5</b>: If the data are significantly skewed, then we recommend to follow the <i>flow chart</i> at the bottom of the online calculator, where a few options are suggested to better handle the summary data at hand.")
+        </script>
+
+
+          <br>
           <noscript>For full functionality of this page it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com" target="_blank" style="font-size: 20px;"> instructions how to enable JavaScript in your web browser</a></noscript>
-          
+
+          <br>
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          <h2 style = "color:blue;font-family:verdana;">Scenario 1</h2>
-          
+          <h3 style = "color:blue;font-family:verdana;">Scenario 1</h3>
+
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:450px;">
           <form name="enter">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Size of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Minimum of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Median of the  sample</p>
-          
+
           <p style="line-height:125%;margin:0px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Maximum of the sample</p>
           </form>
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          
+
           <div align="left" style="margin-top:5px;margin-bottom:10px;margin-left:5px;width:500px;"><a class="btn" href="javascript:wipe1()">&nbsp;&nbsp;&nbsp;Reset&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:nt1()">&nbsp;&nbsp;&nbsp;Detect the skewness&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:calc1()">&nbsp;&nbsp;&nbsp;Calculate&nbsp;&nbsp;&nbsp;</a></div>
-          
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:20px;margin-bottom:15px;"></div>
-          
+
           </div>
-          
-          
+
+
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:750px;">
           <form name="out">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated mean of the  sample from <FONT COLOR="red">Luo et al. (2018)</FONT></p>
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated standard deviation of the  sample from <FONT COLOR="red">Wan et al. (2014)</FONT></p>
           </form>
           </div>
-          
+
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          <h2 style = "color:blue;font-family:verdana;">Scenario 2</h2>
+          <h3 style = "color:blue;font-family:verdana;">Scenario 2</h3>
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:450px;">
           <form name="enter2">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Size of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;First quartile of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Median of the  sample</p>
-          
-          
+
+
           <p style="line-height:125%;margin:0px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Third quartile of the sample</p>
           </form>
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          
+
           <div align="left" style="margin-top:5px;margin-bottom:10px;margin-left:5px;width:500px;"><a class="btn" href="javascript:wipe2()">&nbsp;&nbsp;&nbsp;Reset&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:nt2()">&nbsp;&nbsp;&nbsp;Detect the skewness&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:calc2()">&nbsp;&nbsp;&nbsp;Calculate&nbsp;&nbsp;&nbsp;</a></div>
-          
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:20px;margin-bottom:15px;"></div>
-          
+
           </div>
-          
-          
+
+
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:750px;">
           <form name="out2">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated mean of the  sample from <FONT COLOR="red">Luo et al. (2018)</FONT></p>
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated standard deviation of the  sample from <FONT COLOR="red">Wan et al. (2014)</FONT></p>
           </form>
           </div>
-          
-          
-          
+
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          <h2 style = "color:blue;font-family:verdana;">Scenario 3 </h2>
-          
+          <h3 style = "color:blue;font-family:verdana;">Scenario 3 </h3>
+
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:450px;">
           <form name="enter3">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Size of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Minimum of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;First quartile of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Median of the  sample</p>
-          
+
           <p style="line-height:125%;margin:0px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Third quartile of the sample</p>
-          
+
           <p style="line-height:125%;margin:0px;"><input type="Text" size="8" class="initial3">&nbsp;&nbsp;Maximum of the sample</p>
           </form>
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
-          
+
           <div align="left" style="margin-top:5px;margin-bottom:10px;margin-left:5px;width:500px;"><a class="btn" href="javascript:wipe3()">&nbsp;&nbsp;&nbsp;Reset&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:nt3()">&nbsp;&nbsp;&nbsp;Detect the skewness&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;<a class="btn" href="javascript:calc3()">&nbsp;&nbsp;&nbsp;Calculate&nbsp;&nbsp;&nbsp;</a></div>
-          
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:20px;margin-bottom:15px;"></div>
-          
+
           </div>
-          
-          
+
+
           <div align="left" style="margin-top:5px;margin-bottom:25px;margin-left:5px;width:750px;">
           <form name="out3">
           <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated mean of the  sample from <FONT COLOR="red">Luo et al. (2018)</FONT></p>
-          <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated standard deviation of the  sample from <FONT COLOR="red">Shi et al. (2020a)</FONT></p>
+          <p style="line-height:125%;margin:0px;margin-bottom:3px;"><input type="Text" size="8" class="initial4">&nbsp;&nbsp;Estimated standard deviation of the  sample from <FONT COLOR="red">Shi et al. (2020)</FONT></p>
           </form>
           </div>
-          
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:20px;margin-bottom:15px;"></div>
-          
-          
-          <br>
-          <span style="font-size: 95%;">
-          <h2 style = "color:blue;font-family:verdana;">References: </h2>
-          
+          <span style="font-size: 100%;">
+          <h2 style = "color:black;font-family:verdana;">References: </h2>
+
           <blockquote>
-          
+
           <div align="left">
-          J. Shi, D. Luo, X. Wan, Y. Liu, J. Liu, Z. Bian and T. Tong (2021), "<a href="https://arxiv.org/abs/2010.05749" target="_blank">Detecting the skewness of data from the sample size and the five-number summary</a>", <i>arXiv preprint</i> <a href="https://arxiv.org/pdf/2010.05749.pdf" target="_blank">arXiv:2010.05749</a>.
-        </div>
-          <br>
-            
-           <div align="left">
-          J. Shi, T. Tong, Y. Wang and M. G. Genton (2020b), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/SII2020_Shi.pdf" target="_blank">Estimating the mean and variance from the five-number summary of a log-normal distribution</a>", <i>Statistics and Its Interface</i>, <b>13</b>: 519-531.
+          J. Shi, D. Luo, X. Wan, Y. Liu, J. Liu, Z. Bian and T. Tong (2023), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/SMMR2023.pdf" target="_blank">Detecting the skewness of data from the five-number summary and its application in meta-analysis</a>", <i>Statistical Methods in Medical Research</i>,  <b>32</b>: 1338-1360.
         </div>
           <br>
 
           <div align="left">
-          J. Shi, D. Luo, H. Weng, X. Zeng, L. Lin, H. Chu and T. Tong (2020a), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/RSM2020.pdf" target="_blank">Optimally estimating the sample standard deviation from the five-number summary</a>", <i>Research Synthesis Methods</i>, <b>11</b>: 641-654.
+          J. Shi, D. Luo, H. Weng, X. Zeng, L. Lin, H. Chu and T. Tong (2020), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/RSM2020.pdf" target="_blank">Optimally estimating the sample standard deviation from the five-number summary</a>", <i>Research Synthesis Methods</i>, <b>11</b>: 641-654.
         </div>
           <br>
-          
+
           <div align="left">
           D. Luo, X. Wan, J. Liu and T. Tong (2018), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/SMMR2018.pdf" target="_blank">Optimally estimating the sample mean from the sample size, median, mid-range and/or mid-quartile range</a>", <i>Statistical Methods in Medical Research</i>, <b>27</b>: 1785-1805.
         </div>
           <br>
-          
+
           <div align="left">
           X. Wan, W. Wang, J. Liu and T. Tong (2014), "<a href="http://www.math.hkbu.edu.hk/~tongt/papers/BMC_MRM2014.pdf" target="_blank">Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range</a>", <i>BMC Medical Research Methodology</i>, <b>14</b>: 135.
         </div>
           <br>
-          
-          
+
+
           <div align="center" style="height:0px;border-bottom:solid 1px #cccccc;margin-top:15px;margin-bottom:15px;"></div>
           <br>
-
-          <h2 style = "color:blue;font-family:verdana;">A flow chart for performing meta-analysis when some studies are reported with the whole or part of the five-number summary</h2>
-          <img src="flowchart.png" alt="Flow chart for meta-analysis" />
+          <br>
+          <h2 style = "color:black;font-family:verdana;">A flow chart for performing meta-analysis when some studies are reported with the whole or part of the five-number summary</h2>
+          <br>
+          <img src="flowchart.png" alt="Flow chart for meta-analysis" width="600" height="500">
 
           </blockquote>
           </span>
-          
+
+          <br>
+          <br>
           <br>
           <!-- hitwebcounter Code START -->
           <a href="http://www.hitwebcounter.com" target="_blank">
@@ -518,6 +515,5 @@
         font-size: px; color: #; text-decoration:  ;">                                   </>
           </a>
           <br>
-          </body></html>
-          
-          
+          <br>
+          </body></html> 
